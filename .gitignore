@@ -1,0 +1,12 @@
+# Local Claude Code settings (user-specific)
+.claude/settings.local.json
+
+# OS junk
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
