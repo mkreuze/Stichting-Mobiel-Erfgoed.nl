@@ -1,5 +1,8 @@
 # Local Claude Code settings (user-specific)
-.claude/settings.local.json
+.claude/
+
+# Temp/working files
+.tmp_*
 
 # OS junk
 Thumbs.db
