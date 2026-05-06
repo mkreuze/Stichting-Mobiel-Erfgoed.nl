@@ -28,8 +28,10 @@ jobs:
           SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
           SFTP_TARGET_DIR: ${{ secrets.SFTP_TARGET_DIR }}
         run: |
-          lftp -u "$SFTP_USERNAME","$SFTP_PASSWORD" -e "
+          lftp -e "
           set sftp:auto-confirm yes
+          set sftp:connect-program 'ssh -a -x -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+          open -u $SFTP_USERNAME,$SFTP_PASSWORD sftp://$SFTP_HOST
           mirror -R --verbose --no-perms ./_deploy/ $SFTP_TARGET_DIR
           bye
-          " sftp://$SFTP_HOST
+          "
